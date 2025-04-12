@@ -728,3 +728,171 @@ footer {
   margin: 0 15px;
 }
 
+
+/* ==========================================================================
+   BOTON FLOTANTE DEL CHATBOT
+   ========================================================================== */
+  /* Estilo general para el chatbot */
+#chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+#chat-bubble {
+  background-color: #4A90E2; /* Azul claro */
+  color: white;
+  padding: 10px; /* Disminuye el tamaño */
+  border-radius: 50%; /* Mantiene el círculo */
+  font-size: 20px; /* Disminuye el tamaño del icono */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  width: 50px;  /* Tamaño más pequeño */
+  height: 50px; /* Tamaño más pequeño */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chat-bubble:hover {
+  background-color: #468fbd; /* Color al pasar el ratón */
+}
+
+/* Estilos para la ventana del chatbot */
+#chat-box {
+  display: none; /* Inicia oculto */
+  position: fixed;
+  bottom: 80px;
+  right: 15px;
+  width: 300px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+#chat-header {
+  background-color: #4A90E2; /* Azul claro */
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+}
+
+#chat-header span {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #badbee;
+  border-bottom: 2px solid #ccc;
+}
+
+#chat-input {
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  width: calc(100% - 24px);
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+#chat-input:focus {
+  outline: none;
+  border-color: #4A90E2; /* Azul claro */
+}
+
+.chat-message {
+  margin: 15px 0;
+  padding: 8px;
+  border-radius: 10px;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.chat-message.user {
+  background-color: #4f534f;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.chat-message.bot {
+  background-color: #f0f0f0;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Estilos para las transiciones suaves */
+.chat-message {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ==========================================================================
+   CAJA DEL ENVIO DEL MSJ AL BOT Y POSICIONAMIENTO DEL ENVIO
+   ========================================================================== */
+  
+/* Contenedor del input y la flecha */
+#chat-input-container {
+  position: relative;          /* Necesario para que la flecha (con position: absolute) se posicione respecto a este contenedor */
+  display: flex;               /* Coloca el input y otros elementos (como la flecha) en una línea horizontal */
+  align-items: center;         /* Centra verticalmente el input dentro del contenedor */
+  margin-top: 0px;            /* Espacio superior respecto a otros elementos */
+  padding: 2px;                /* Espaciado interno del contenedor */
+}
+
+/* El campo de texto donde se escribe el mensaje */
+#chat-input {
+  width: 75%;                 /* Ocupa todo el ancho disponible del contenedor */
+  padding: 10px;               /* Espaciado interno dentro del input */
+  border-radius: 20px;         /* Bordes redondeados estilo burbuja */
+  border: 1px solid #ddd;      /* Borde fino gris claro */
+  font-size: 16px;             /* Tamaño del texto */
+}
+
+/* El ícono de enviar (la flecha) */
+#send-message {
+  position: absolute;          /* Lo posiciona libremente dentro del contenedor relativo */
+  top: 45%;                    /* Lo ubica hacia abajo desde el borde superior del contenedor */
+  right: 20px;                 /* Lo separa del borde derecho */
+  transform: translateY(-50%); /* Ajuste para centrar mejor verticalmente el ícono */
+  cursor: pointer;             /* Cambia el cursor a mano al pasar por encima */
+  font-size: 20px;             /* Tamaño del ícono */
+  color: #007bff;              /* Color azul */
+  transition: transform 0.2s;  /* Animación suave al hacer hover */
+}
+
+/* Animación cuando el mouse pasa sobre la flecha */
+#send-message:hover {
+  transform: scale(1.2);       /* Agranda un poco el ícono al pasar el mouse */
+}
+
+
+
+
+
+
