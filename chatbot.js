@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeButton = document.getElementById("close-chat");
     const sendMessageButton = document.getElementById("send-message");
   
+
+      // Al cargar la página, aseguramos que el chat esté oculto
+      chatBox.style.display = "none"; // El chat está oculto al inicio
+      
     // Mostrar / ocultar el chatbot
     chatBubble.addEventListener("click", toggleChat);
     closeButton.addEventListener("click", toggleChat);
