@@ -117,9 +117,10 @@ body.scrolled .navbar {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  height: 21px;
+  height: 25px;
   cursor: pointer;
   z-index: 1001;
+  margin-top: 10px;
 }
 
 /* Líneas del menú hamburguesa */
