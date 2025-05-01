@@ -65,72 +65,103 @@ body {
 /* ==========================================================================
    NAVEGACIÓN
    ========================================================================== */
-
-/* Barra de navegación fija con efecto de transición */
-.navbar {
-  background-color: #387abd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.6rem 1rem; /* Reducido el padding horizontal en mobile */
-  border-bottom: 1px solid #ddd;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* Efecto de cambio de color al hacer scroll */
-body.scrolled .navbar {
-  background-color: #002244;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Logotipo */
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff; /* Cambiado a blanco para mejor contraste */
-}
-
-/* Menú de navegación horizontal */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-/* Enlaces de navegación */
-.nav-links li a {
-  text-decoration: none;
-  color: #fff; /* Cambiado a blanco para mejor contraste */
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-links li a:hover {
-  color: #e0f7ff; /* Color más claro al pasar el mouse */
-}
-
-/* Botón de menú hamburguesa (oculto en desktop) */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 25px;
-  cursor: pointer;
-  z-index: 1001;
-  margin-top: 10px;
-}
-
-/* Líneas del menú hamburguesa */
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background-color: #fff; /* Cambiado a blanco para contraste */
-  margin-bottom: 5px;
-  border-radius: 2px;
-}
+   
+  .navbar {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navbar .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .nav-links {
+    list-style: none; /* Elimina los puntos o viñetas */
+    padding: 0; /* Elimina el padding de la lista */
+    margin: 0; /* Elimina el margen de la lista */
+  }
+  .nav-links li {
+    position: relative; /* Esto NO es obligatorio, pero ayuda a posicionar bien */
+  }
+  
+  
+  
+  .nav-links li a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    color: #38bdf8;
+  }
+  
+  .nav-links li a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 100%;
+    background-color: #ff0000;
+  }
+  
+  .login-btn {
+    background-color: #38bdf8;
+    color: #000;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+  
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
+  }
+  
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #1e3a8a;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+    }
+  
+    .nav-links.show {
+      display: flex;
+    }
+  
+    .menu-toggle {
+      display: flex;
+    }
+  }
+  
 
 /* ==========================================================================
    SECCIÓN HERO

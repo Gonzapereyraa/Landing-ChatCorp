@@ -5,7 +5,7 @@ const translations = {
       'nav.features': 'Características',
       'nav.demo': 'Demostración',
       'nav.plans': 'Planes',
-      'nav.faq': 'Preguntas Frecuentes',
+      'nav.faq': 'FAQ',
       'nav.contact': 'Contacto',
       'hero.title': 'Soluciones con Chatbots Inteligentes',
       'hero.subtitle': 'Automatizá la atención al cliente con IA de forma rápida y eficiente.',
