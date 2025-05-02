@@ -16,6 +16,8 @@ html {
 
 /* Configuración básica del cuerpo */
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
   color: #222;
   line-height: 1.6;
@@ -50,9 +52,10 @@ body {
 /* Contenedor sección con márgenes automáticos */
 .section {
   padding: 4rem 1rem; /* Respirable en mobile */
-  max-width: 1200px;
-  margin: auto;
   text-align: center;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  box-sizing: border-box;
+
 }
 
 /* Títulos de sección */
@@ -162,6 +165,118 @@ body {
     }
   }
   
+/* Estilos de la nueva barra de navegación */
+header {
+  width: 100%;
+  margin: 0; /* Aseguramos que no haya márgenes */
+  background-color: #1e3a8a; /* Un azul diferente al tuyo original */
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+body {
+  margin: 0; /* Elimina todos los márgenes del body */
+  padding: 0; /* Aseguramos que no haya padding en el body */
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+nav#main-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav#main-nav a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+}
+
+nav#main-nav a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 2px;
+  width: 100%;
+  background-color: #38bdf8;
+}
+
+.login-btn {
+  background-color: #38bdf8;
+  color: #000;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+}
+.section {
+  padding: 4rem 1rem;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  header {
+    width: 100%; /* Aseguramos el ancho completo */
+    margin: 0; /* Aseguramos que no haya márgenes */
+    padding: 1rem; /* Ajustamos el padding en responsive */
+    box-sizing: border-box; /* Incluimos el padding en el ancho */
+  }
+
+  nav#main-nav {
+    display: none;
+    flex-direction: column;
+    background-color: #1e3a8a;
+    position: absolute;
+    top: 100%; /* Ubica el menú justo debajo del header */
+    left: 0;
+    width: 100%; /* Aseguramos el ancho completo */
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  nav#main-nav.show {
+    display: flex;
+    width: 100%; /* Aseguramos el ancho completo al mostrarse */
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .section {
+    padding: 2rem 0.5rem; /* Ajustamos el padding para mobile */
+  }
+}
+
+/* Mantener tus estilos existentes y adaptarlos si es necesario */
+body.scrolled .navbar {
+  background-color: #002244; /* Esto ahora afectará al header */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
 
 /* ==========================================================================
    SECCIÓN HERO

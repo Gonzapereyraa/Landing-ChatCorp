@@ -1,15 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Hamburguesa
-  const menuToggle = document.getElementById("menuToggle");
-  const navLinks = document.getElementById("navLinks");
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
-  });
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.getElementById("main-nav");
 
-  // AOS Init
+  console.log("menuToggle:", menuToggle);
+  console.log("navLinks:", navLinks);
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+      console.log("Botón de hamburguesa clickeado. Clase 'show' de navLinks:", navLinks.classList.contains("show"));
+    });
+  } else {
+    console.log("No se encontraron menuToggle o navLinks");
+  }
+
+  // AOS Init (se mantiene igual)
   AOS.init();
 
+
   // Preguntas frecuentes
+
+  // Preguntas frecuentes - cada una funciona de forma independiente (se mantiene igual)
   const faqs = document.querySelectorAll(".faq-question");
   faqs.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -24,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Palabras rotativas
+
+  // Palabras rotativas (se mantiene igual)
   const words = ["Multiagente", "de automatización", "De centralización", "de gestión"];
   let currentWordIndex = 0;
   const rotatingWordElement = document.querySelector(".rotating-word");
@@ -57,8 +71,33 @@ window.addEventListener("scroll", () => {
           link.classList.add("active");
         }
       });
+    if (rotatingWordElement) {
+      rotatingWordElement.textContent = words[currentWordIndex];
+      rotatingWordElement.style.animation = "none";
+      void rotatingWordElement.offsetWidth;
+      rotatingWordElement.style.animation = null;
+      currentWordIndex = (currentWordIndex + 1) % words.length;
+    }
+  }
+
+  if (rotatingWordElement) {
+    rotatingWordElement.addEventListener("animationend", changeWord);
+    changeWord(); // Inicializa la primera palabra
+  }
+
+  // Cerrar el menú al hacer clic fuera de él
+  document.addEventListener("click", function (event) {
+    const nav = document.getElementById("main-nav");
+    const menuToggle = document.querySelector(".menu-toggle");
+    if (nav && menuToggle && !nav.contains(event.target) && !menuToggle.contains(event.target)) {
+      nav.classList.remove("show");
+      console.log("Clic fuera del menú. Clase 'show' removida de nav:", nav ? nav.classList.contains("show") : 'nav is null');
+
     }
   });
 });
 
+
 });
+
+// REMOVÍ la función toggleMenu duplicada aquí

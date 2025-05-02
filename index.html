@@ -25,10 +25,33 @@
       <div class="option">
         <input type="radio" name="btn" class="input" value="en" id="lang-en">
         <div class="btn"><span class="span">🇺🇸</span></div>
+
+</head>
+
+<body>
+  <!-- Header con Navbar -->
+  <header class="navbar">
+    <div class="logo">ChatCorp</div>
+
+    <!-- Selector de idioma -->
+    <div class="language-switcher">
+      <div class="wrapper" id="language-switcher">
+        <div class="option">
+          <input type="radio" name="btn" class="input" value="es" id="lang-es" checked>
+          <div class="btn">
+            <span class="span">🇦🇷</span>
+          </div>
+        </div>
+        <div class="option">
+          <input type="radio" name="btn" class="input" value="en" id="lang-en">
+          <div class="btn">
+            <span class="span">🇺🇸</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
+<<<<<<< HEAD
   <!-- Menú de navegación -->
   <ul class="nav-links" id="navLinks">
     <li><a href="#inicio" data-i18n="nav.home">Inicio</a></li>
@@ -46,8 +69,25 @@
     <span></span>
   </div>
 </nav>
+    <!-- Botón hamburguesa -->
+    <div class="menu-toggle" id="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <!-- Navegación -->
+    <nav id="main-nav">
+      <a href="#inicio" class="active" data-i18n="nav.home">Inicio</a>
+      <a href="#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="#planes" data-i18n="nav.plans">Planes</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+      <a href="#login" class="login-btn" data-i18n="nav.login">Login</a>
+    </nav>
+  </header>
 
-
+  
+  
 <!-- Hero -->
 <section class="hero" id="inicio">
   <div class="hero-overlay">
@@ -190,6 +230,38 @@
   </div>
 </section>
 
+
+
+<!-- PREGUNTAS FRECUENTES -->  
+<section class="section" id="faq">
+  <h2 data-i18n="faq.title" data-aos="fade-up">Preguntas Frecuentes</h2>
+  <div class="faq-container">
+    <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+      <button class="faq-question" data-i18n="faq.q1">¿Cuánto demora la entrega del chatbot?</button>
+      <div class="faq-answer" data-i18n="faq.a1">Normalmente entre 3 y 5 días hábiles dependiendo de la complejidad.</div>
+    </div>
+    <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+      <button class="faq-question" data-i18n="faq.q2">¿Funciona con WhatsApp o Instagram?</button>
+      <div class="faq-answer" data-i18n="faq.a2">Sí, podemos integrarlo en tus canales como WhatsApp, Instagram o tu propia web.</div>
+    </div>
+    <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+      <button class="faq-question" data-i18n="faq.q3">¿Puedo modificar las respuestas luego?</button>
+      <div class="faq-answer" data-i18n="faq.a3">Claro, ofrecemos soporte para ajustes posteriores o paneles de autogestión según el plan.</div>
+    </div>
+    <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+      <button class="faq-question" data-i18n="faq.q4">¿El chatbot funciona las 24 horas?</button>
+      <div class="faq-answer" data-i18n="faq.a4">Sí, todos nuestros bots están activos 24/7 para garantizar respuestas inmediatas a tus clientes.</div>
+    </div>
+    <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+      <button class="faq-question" data-i18n="faq.q5">¿Cuánto cuesta el servicio?</button>
+      <div class="faq-answer" data-i18n="faq.a5">Ofrecemos diferentes planes según las necesidades de tu empresa. Podés consultar precios en nuestra sección de Planes o solicitarnos una cotización.</div>
+    </div>
+    <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+      <button class="faq-question" data-i18n="faq.q6">¿Qué pasa si el bot no entiende una pregunta?</button>
+      <div class="faq-answer" data-i18n="faq.a6">En ese caso, el bot deriva automáticamente la consulta a un agente humano o muestra una respuesta alternativa.</div>
+    </div>
+  </div>
+</section>
 
 
 <!-- Contacto -->
