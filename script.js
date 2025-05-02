@@ -1,24 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Hamburguesa
   const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.getElementById("main-nav");
+  const navLinksContainer = document.getElementById("main-nav"); // Renombramos para claridad
+  const navItems = document.querySelectorAll("nav#main-nav a");
+  const navLine = document.querySelector("nav#main-nav .nav-line");
 
-  console.log("menuToggle:", menuToggle);
-  console.log("navLinks:", navLinks);
+  console.log("navLine:", navLine);
+  console.log("navLinksContainer:", navLinksContainer);
 
-  if (menuToggle && navLinks) {
+  if (menuToggle && navLinksContainer) {
     menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-      console.log("Botón de hamburguesa clickeado. Clase 'show' de navLinks:", navLinks.classList.contains("show"));
+      navLinksContainer.classList.toggle("show");
     });
-  } else {
-    console.log("No se encontraron menuToggle o navLinks");
   }
 
-  // AOS Init (se mantiene igual)
+  // Función para actualizar la posición de la línea
+  function updateNavLinePosition(activeLink) {
+    if (activeLink && navLine && navLinksContainer) {
+      const linkRect = activeLink.getBoundingClientRect();
+      const navRect = navLinksContainer.getBoundingClientRect();
+      navLine.style.left = linkRect.left - navRect.left + 'px';
+      navLine.style.width = linkRect.width + 'px';
+    } else {
+      console.log("Uno de los elementos (activeLink, navLine, navLinksContainer) es null dentro de updateNavLinePosition.");
+    }
+  }
+
+  // AOS Init
   AOS.init();
 
-  // Preguntas frecuentes - cada una funciona de forma independiente (se mantiene igual)
+  // Preguntas frecuentes
   const faqs = document.querySelectorAll(".faq-question");
   faqs.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -32,51 +43,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Palabras rotativas (se mantiene igual)
-  const words = ["Multiagente", "de automatización", "De centralización", "de gestión"];
-  let currentWordIndex = 0;
-  const rotatingWordElement = document.querySelector(".rotating-word");
-
-  function changeWord() {
-    rotatingWordElement.textContent = words[currentWordIndex];
-    rotatingWordElement.style.animation = "none";
-    void rotatingWordElement.offsetWidth;
-    rotatingWordElement.style.animation = null;
-    currentWordIndex = (currentWordIndex + 1) % words.length;
-  }
-
-  rotatingWordElement.addEventListener("animationend", changeWord);
-  changeWord();
-
+  // Detectar el scroll y cambiar la clase activa en los enlaces y la línea
   const sections = document.querySelectorAll("section[id]");
-  const navItems = document.querySelectorAll(".nav-links li a:not(.login-btn)");
 
   window.addEventListener("scroll", () => {
     const scrollPos = window.scrollY + 100; // Ajusta si tu navbar es más alta o más baja
+    let currentActiveLink = null;
 
     sections.forEach(section => {
       const top = section.offsetTop;
       const height = section.offsetHeight;
       const id = section.getAttribute("id");
 
-      if (scrollPos >= top && scrollPos < top + height) {
-        navItems.forEach(link => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${id}`) {
-            link.classList.add("active");
-          }
-        });
-
-        if (rotatingWordElement) {
-          rotatingWordElement.textContent = words[currentWordIndex];
-          rotatingWordElement.style.animation = "none";
-          void rotatingWordElement.offsetWidth;
-          rotatingWordElement.style.animation = null;
-          currentWordIndex = (currentWordIndex + 1) % words.length;
+      // Cambiar la clase activa en el menú de navegación
+      navItems.forEach(link => {
+        link.classList.remove("active");
+        if (scrollPos >= top && scrollPos < top + height && link.getAttribute("href") === `#${id}`) {
+          link.classList.add("active");
+          currentActiveLink = link;
         }
+      });
+
+      // Actualizar la posición de la línea si hay un enlace activo
+      if (currentActiveLink) {
+        updateNavLinePosition(currentActiveLink);
       }
     });
   });
+
+  // Establecer la posición inicial de la línea al cargar la página
+  const initialActiveLink = document.querySelector("nav#main-nav a.active");
+  console.log("initialActiveLink:", initialActiveLink);
+  if (initialActiveLink) {
+    updateNavLinePosition(initialActiveLink);
+  }
 
   // Cerrar el menú al hacer clic fuera de él
   document.addEventListener("click", function (event) {
@@ -84,7 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuToggle = document.querySelector(".menu-toggle");
     if (nav && menuToggle && !nav.contains(event.target) && !menuToggle.contains(event.target)) {
       nav.classList.remove("show");
-      console.log("Clic fuera del menú. Clase 'show' removida de nav:", nav ? nav.classList.contains("show") : 'nav is null');
+    }
+  });
+
+  // Actualizar la posición de la línea en el resize de la ventana
+  window.addEventListener('resize', () => {
+    const currentActive = document.querySelector("nav#main-nav a.active");
+    if (currentActive) {
+      updateNavLinePosition(currentActive);
     }
   });
 });

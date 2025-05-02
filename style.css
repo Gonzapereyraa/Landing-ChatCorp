@@ -39,6 +39,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  box-sizing: border-box;
 }
 
 /* Regla específica para sección de contacto */
@@ -47,6 +49,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  box-sizing: border-box;
 }
 
 /* Contenedor sección con márgenes automáticos */
@@ -55,7 +59,6 @@ body {
   text-align: center;
   width: 100%; /* Asegura que ocupe todo el ancho */
   box-sizing: border-box;
-
 }
 
 /* Títulos de sección */
@@ -95,12 +98,23 @@ body {
 nav#main-nav {
   display: flex;
   gap: 1.5rem;
+  position: relative;
 }
 
 nav#main-nav a {
   color: white;
   text-decoration: none;
   position: relative;
+  padding-bottom: 0.5rem; /* Espacio para la línea */
+}
+
+nav#main-nav .nav-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: #38bdf8;
+  transition: left 0.3s ease-in-out, width 0.3s ease-in-out; /* Animación suave */
 }
 
 nav#main-nav a.active::after {
@@ -110,7 +124,7 @@ nav#main-nav a.active::after {
   bottom: -5px;
   height: 2px;
   width: 100%;
-  background-color: #38bdf8;
+  background-color: transparent; /* Hacer la línea estática transparente */
 }
 
 .login-btn {
@@ -132,12 +146,6 @@ nav#main-nav a.active::after {
   height: 3px;
   background-color: white;
   margin: 4px 0;
-}
-.section {
-  padding: 4rem 1rem;
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
@@ -179,7 +187,6 @@ body.scrolled .navbar {
   background-color: #002244; /* Esto ahora afectará al header */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 
 /* ==========================================================================
    SECCIÓN HERO
