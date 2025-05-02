@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Hamburguesa
   const menuToggle = document.querySelector(".menu-toggle");
-  const navLinksContainer = document.getElementById("main-nav"); // Renombramos para claridad
+  const navLinksContainer = document.getElementById("main-nav");
   const navItems = document.querySelectorAll("nav#main-nav a");
   const navLine = document.querySelector("nav#main-nav .nav-line");
 
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Detectar el scroll y cambiar la clase activa en los enlaces y la línea
-  const sections = document.querySelectorAll("section[id]");
+  const sections = document.querySelectorAll("section[id], form[id]"); // Incluimos los formularios con ID
 
   window.addEventListener("scroll", () => {
     const scrollPos = window.scrollY + 100; // Ajusta si tu navbar es más alta o más baja
