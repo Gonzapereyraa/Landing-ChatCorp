@@ -100,6 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
         {
           palabrasClave: ["24hs", "disponible", "siempre", "tiempo completo", "siempre disponible"],
           respuesta: "Sí, todos nuestros bots están activos 24/7 para garantizar respuestas inmediatas a tus clientes."
+        },
+         {
+          palabrasClave: ["Horarios", "Horario", "horario", "horarios", "disponible"],
+          respuesta: "Nuestro horario de atención es de lunes a viernes de 9:00 a 18:00 hs"
         }
       ];
   
