@@ -151,7 +151,12 @@ document.addEventListener("DOMContentLoaded", function () {
        {
         palabrasClave: ["Horarios", "Horario", "horario", "horarios", "disponible"],
         respuesta: "Nuestro horario de atención es de lunes a viernes de 9:00 a 18:00 hs"
+      },
+      {
+        palabrasClave: ["puto", "gato", "trolo", "putas", "choto"],
+        respuesta: "Tu vieja Putoo"
       }
+
     ];
 
     // Normalizar el mensaje del usuario dividiéndolo en palabras
