@@ -6,9 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeButton = document.getElementById("close-chat");
   const sendMessageButton = document.getElementById("send-message");
 
-  // Al cargar la página, aseguramos que el chat esté oculto
-  chatBox.style.display = "none"; // El chat está oculto al inicio
-    
+
+  chatBox.style.display = "none";
   // Mostrar / ocultar el chatbot
   chatBubble.addEventListener("click", toggleChat);
   closeButton.addEventListener("click", toggleChat);
@@ -19,11 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       enviarMensaje();
     }
   });
-
-  // Enviar mensaje al hacer clic en la flecha
   sendMessageButton.addEventListener("click", enviarMensaje);
-
-  // Función para enviar mensaje cuando se hace clic en la flecha
   function enviarMensaje() {
     if (chatInput.value.trim() !== "") {
       const userMessage = chatInput.value.trim();
@@ -33,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Función para mostrar los mensajes en el chat
   function mostrarMensaje(remitente, texto, tipo) {
     const mensaje = document.createElement("div");
     mensaje.className = "chat-message " + tipo;
@@ -72,16 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Función que genera la respuesta del chatbot
   function responderAlUsuario(mensaje) {
     let respuesta = "Lo siento, no entendí tu pregunta. ¿Podés reformularla?";
-    // Umbral de similitud más estricto, o adaptable.
-    // Un umbral de 0 significa coincidencia exacta.
-    // Un umbral de 1 o 2 es para errores tipográficos leves.
     const umbralBaseSimilitud = 1; 
-    
     let mejorCoincidenciaDistancia = Infinity;
     let mejorRespuesta = respuesta;
     let coincidenciaExactaEncontrada = false;
-
-    // Respuestas personalizadas
     const respuestas = [
             {
         palabrasClave: ["contacto", "teléfono", "número", "dirección", "cómo contactar"],
@@ -104,8 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
         palabrasClave: ["gracias", "muchas gracias", "te agradezco", "gracias bot", "thank you", "thanks", "grax", "graciaas", "mil gracias", "muchísimas gracias", "muy agradecido", "muy agradecida", "te lo agradezco", "agradezco", "grazie", "merci", "danke", "obrigado", "gracias por todo", "gracias por la ayuda", "gracias por la info", "gracias por la información", "thank u", "thx", "ty", "tysm", "thanks a lot", "appreciate it", "much appreciated", "gracias che", "gracias amigo", "gracias wacho", "te pasaste", "sos un genio", "buenísimo gracias", "buenisimo gracias", "perfecto gracias", "excelente gracias", "genial gracias"],
         respuesta: "¡De nada! 😊 Me alegra poder ayudarte. ¿Hay algo más en lo que pueda asistirte?"
       },
-
-      // INFORMACIÓN SOBRE PLANES Y PRECIOS
       {
         palabrasClave: ["planes", "precios", "costos", "cuánto cuesta", "qué planes tienen", "cuál es el costo", "precio", "plan", "ofertas", "que planes hay", "cuales son los planes", "cuáles son los planes", "mostrame los planes", "muéstrame los planes", "ver planes", "info de planes", "información de planes", "informacion de planes", "planes disponibles", "opciones de planes", "tipos de planes", "planes y precios", "cuanto sale", "cuánto sale", "cuanto cobran", "cuánto cobran", "que cuesta", "qué cuesta", "costo del servicio", "precios del servicio", "tarifas", "arancel", "valor", "valores", "cotización", "cotizacion", "presupuesto", "cuanto tengo que pagar", "cuánto tengo que pagar", "cuanto me sale", "cuánto me sale", "cuanto es", "cuánto es", "pricing", "price", "cost", "how much", "fees", "rates", "servicios y precios", "lista de precios", "tabla de precios", "cuadro de precios", "menu de precios", "menú de precios", "catalogo", "catálogo", "catalog", "paquetes", "packages", "bundles", "opciones", "options", "modalidades", "alternativas", "alternatives", "propuestas", "proposals"],
         respuesta: "Tenemos 3 planes principales para adaptarse a tus necesidades:\n\n💫 **Plan Starter** - $9,000/mes\n🚀 **Plan Pro** - $18,000/mes\n🏢 **Plan Empresarial** - Desde $30,000/mes\n\n¿Te gustaría conocer los detalles de algún plan específico?"
@@ -151,51 +137,36 @@ document.addEventListener("DOMContentLoaded", function () {
        {
         palabrasClave: ["Horarios", "Horario", "horario", "horarios", "disponible"],
         respuesta: "Nuestro horario de atención es de lunes a viernes de 9:00 a 18:00 hs"
-      },
-      {
-        palabrasClave: ["puto", "gato", "trolo", "putas", "choto"],
-        respuesta: "Tu vieja Putoo"
       }
 
     ];
 
-    // Normalizar el mensaje del usuario dividiéndolo en palabras
     const palabrasMensajeUsuario = mensaje.split(/\s+/);
-
-    // Buscar respuesta usando Levenshtein Distance y coincidencia de palabras
     for (let i = 0; i < respuestas.length; i++) {
       for (let palabraClave of respuestas[i].palabrasClave) {
-        // Primero, verificar si hay una coincidencia exacta de la palabra clave completa
         if (mensaje.includes(palabraClave)) {
           mejorRespuesta = respuestas[i].respuesta;
           coincidenciaExactaEncontrada = true;
-          break; // Salir del bucle interno, ya encontramos una coincidencia exacta
+          break; 
         }
 
-        // Si no hay coincidencia exacta, revisar palabras individuales con Levenshtein
         for (let palabraUsuario of palabrasMensajeUsuario) {
           const distancia = levenshteinDistance(palabraUsuario, palabraClave);
-          
-          // Definir un umbral de similitud adaptable.
-          // Para palabras clave más cortas (ej. "dos"), el umbral debe ser 0 o 1.
-          // Para palabras clave más largas, puede ser un poco más permisivo.
           let umbralActual = umbralBaseSimilitud;
-          if (palabraClave.length > 4) { // Por ejemplo, palabras de 5 o más letras
-              umbralActual = Math.min(Math.floor(palabraClave.length / 3), 2); // Hasta 2 errores para palabras largas
+          if (palabraClave.length > 4) { 
+              umbralActual = Math.min(Math.floor(palabraClave.length / 3), 2); 
           }
-          if (palabraClave.length <= 3) { // Para palabras muy cortas como "dos"
-              umbralActual = 0; // Exige coincidencia exacta o casi exacta
+          if (palabraClave.length <= 3) { 
+              umbralActual = 0; 
           }
 
           if (distancia <= umbralActual && distancia < mejorCoincidenciaDistancia) {
               mejorCoincidenciaDistancia = distancia;
               mejorRespuesta = respuestas[i].respuesta;
-              // No rompemos aquí para seguir buscando la mejor coincidencia posible
-              // si hay varias palabras clave que pueden coincidir.
           }
         }
       }
-      if (coincidenciaExactaEncontrada) break; // Si ya encontramos una coincidencia exacta, salir
+      if (coincidenciaExactaEncontrada) break; 
     }
 
     setTimeout(() => {
@@ -209,14 +180,14 @@ document.addEventListener("DOMContentLoaded", function () {
       chatBox.style.opacity = "0";
       chatBox.style.transform = "scale(0.8)";
       setTimeout(() => {
-        chatBox.style.display = "none";  // Ocultar después de la animación
-      }, 300); // Tiempo igual a la duración de la transición
+        chatBox.style.display = "none";  
+      }, 300); 
     } else {
       chatBox.style.display = "flex";
       setTimeout(() => {
         chatBox.style.opacity = "1";
         chatBox.style.transform = "scale(1)";
-      }, 10);  // Un pequeño retraso para que la transición se vea
+      }, 10); 
     }
   }
 });

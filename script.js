@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // AOS Init
   AOS.init();
 
   // Preguntas frecuentes
@@ -44,18 +43,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Detectar el scroll y cambiar la clase activa en los enlaces y la línea
-  const sections = document.querySelectorAll("section[id], form[id]"); // Incluimos los formularios con ID
+  const sections = document.querySelectorAll("section[id], form[id]"); 
 
   window.addEventListener("scroll", () => {
-    const scrollPos = window.scrollY + 100; // Ajusta si tu navbar es más alta o más baja
+    const scrollPos = window.scrollY + 100;
     let currentActiveLink = null;
 
     sections.forEach(section => {
       const top = section.offsetTop;
       const height = section.offsetHeight;
       const id = section.getAttribute("id");
-
-      // Cambiar la clase activa en el menú de navegación
       navItems.forEach(link => {
         link.classList.remove("active");
         if (scrollPos >= top && scrollPos < top + height && link.getAttribute("href") === `#${id}`) {
@@ -63,8 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
           currentActiveLink = link;
         }
       });
-
-      // Actualizar la posición de la línea si hay un enlace activo
       if (currentActiveLink) {
         updateNavLinePosition(currentActiveLink);
       }

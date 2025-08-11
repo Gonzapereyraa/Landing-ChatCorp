@@ -70,6 +70,7 @@ const translations = {
     'contact.email': 'Correo electrónico',
     'contact.message': 'Mensaje',
     'contact.send': 'Enviar',
+    'contact.title': 'Contactanos',
     'footer.rights': '&copy; 2025 ChatCorp. Todos los derechos reservados.',
     'about.members.gonzalo.name': 'Gonzalo Pereyra',
     'about.members.gonzalo.role': 'Desarrollador Frontend',
@@ -78,7 +79,7 @@ const translations = {
     'about.members.franco.name': 'Franco Rebolloso',
     'about.members.franco.role': 'Especialista en IA',
     'about.members.rodrigo.name': 'Rodrigo Pereyra',
-    'about.members.rodrigo.role': 'Diseñador UX/UI'
+    'about.members.rodrigo.role': 'Diseñador UX/UI',
   },
   en: {
     'nav.home': 'Home',
@@ -151,6 +152,7 @@ const translations = {
     'contact.email': 'Email',
     'contact.message': 'Message',
     'contact.send': 'Send',
+    'contact.title': 'Contact us',
     'footer.rights': '&copy; 2025 ChatCorp. All rights reserved.',
     'about.members.gonzalo.name': 'Gonzalo Pereyra',
     'about.members.gonzalo.role': 'Frontend Developer',
@@ -159,7 +161,8 @@ const translations = {
     'about.members.franco.name': 'Franco Rebolloso',
     'about.members.franco.role': 'AI Specialist',
     'about.members.rodrigo.name': 'Rodrigo Pereyra',
-    'about.members.rodrigo.role': 'UX/UI Designer'
+    'about.members.rodrigo.role': 'UX/UI Designer',
+  
   }
 };
 
