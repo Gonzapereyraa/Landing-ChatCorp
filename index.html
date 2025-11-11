@@ -76,29 +76,19 @@
   </p>
 
   <div class="team-container">
-    <div class="team-member">
-      <img src="img/photo-gonza.jpeg" alt="Gonzalo Pereyra">
+    <div class="team-member" data-cv="Cv_PereyraGonzalo_es.pdf">
+      <img src="img/iamm.jpg" alt="Gonzalo Pereyra">
       <h4 data-i18n="about.members.gonzalo.name">Gonzalo Pereyra</h4>
       <p data-i18n="about.members.gonzalo.role">Desarrollador Frontend</p>
     </div>
 
-    <div class="team-member">
+    <div class="team-member" data-cv="Joaquin_Sanchez.pdf">
       <img src="img/photo-joaco.jpeg" alt="Joaquin Sanchez">
       <h4 data-i18n="about.members.joaquin.name">Joaquin Sanchez</h4>
       <p data-i18n="about.members.joaquin.role">Desarrollador Backend</p>
     </div>
 
-    <div class="team-member">
-      <img src="img/photo-franco.jpeg" alt="Franco Rebolloso">
-      <h4 data-i18n="about.members.franco.name">Franco Rebolloso</h4>
-      <p data-i18n="about.members.franco.role">Especialista en IA</p>
-    </div>
-
-    <div class="team-member">
-      <img src="img/photo-rodri.jpeg" alt="Rodrigo Pereyra">
-      <h4 data-i18n="about.members.rodrigo.name">Rodrigo Pereyra</h4>
-      <p data-i18n="about.members.rodrigo.role">Diseñador UX/UI</p>
-    </div>
+    
   </div>
 </section>
 
@@ -228,6 +218,16 @@
   </div>
 </section>
 
+<!-- Seccion de video Entrevista -->
+<section class="section" id="entrevista">
+  <h2 data-i18n="interview.title" data-aos="fade-up">Entrevista con Nuestro Equipo</h2>
+  <div class="video-container" data-aos="fade-up" data-aos-delay="200">
+    <video width="100%" controls>
+      <source src="meeting ingles.mp4" type="video/mp4">
+      Tu navegador no soporta el elemento de video.
+    </video>
+  </div>
+</section>
 
 <!-- Contacto -->
   <h2  data-aos="fade-up" style="text-align: center;" data-i18n="contact.title">
@@ -246,6 +246,14 @@
   <button type="submit" data-i18n="contact.send">Enviar</button>
 </form>
 
+
+<!-- Modal para CV -->
+<div id="cv-modal" class="cv-modal">
+  <div class="cv-modal-content">
+    <span class="cv-modal-close">&times;</span>
+    <iframe id="cv-iframe" src="" frameborder="0"></iframe>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer>

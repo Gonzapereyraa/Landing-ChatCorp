@@ -80,6 +80,7 @@ const translations = {
     'about.members.franco.role': 'Especialista en IA',
     'about.members.rodrigo.name': 'Rodrigo Pereyra',
     'about.members.rodrigo.role': 'Diseñador UX/UI',
+    'interview.title': 'Entrevista con Nuestro Equipo',
   },
   en: {
     'nav.home': 'Home',
@@ -162,6 +163,7 @@ const translations = {
     'about.members.franco.role': 'AI Specialist',
     'about.members.rodrigo.name': 'Rodrigo Pereyra',
     'about.members.rodrigo.role': 'UX/UI Designer',
+    'interview.title': 'Interview with Our Team',
   
   }
 };

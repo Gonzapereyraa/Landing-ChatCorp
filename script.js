@@ -89,4 +89,35 @@ document.addEventListener("DOMContentLoaded", function () {
       updateNavLinePosition(currentActive);
     }
   });
+
+  // Modal para CV de desarrolladores
+  const modal = document.getElementById('cv-modal');
+  const modalClose = document.querySelector('.cv-modal-close');
+  const cvIframe = document.getElementById('cv-iframe');
+  const teamMembers = document.querySelectorAll('.team-member');
+
+  teamMembers.forEach(member => {
+    member.addEventListener('click', function() {
+      const cvPath = this.getAttribute('data-cv');
+      if (cvPath) {
+        cvIframe.src = cvPath;
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  modalClose.addEventListener('click', function() {
+    modal.style.display = 'none';
+    cvIframe.src = '';
+    document.body.style.overflow = 'auto';
+  });
+
+  window.addEventListener('click', function(event) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+      cvIframe.src = '';
+      document.body.style.overflow = 'auto';
+    }
+  });
 });
